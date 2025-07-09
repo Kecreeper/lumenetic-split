@@ -32,3 +32,13 @@ For now, I have made the matrix and USB C port on the schematic and some of the 
 ![July 4 PCB](/imagesJournal/July4PCB.png)
 
 **Total time spent: 4h**
+
+# July 8, 2024
+
+This entire 2 hour session was spent on understanding 18650 batteries and finding a battery charger ic.
+
+I did not know whether or not I needed a BMS/protection on my PCB for the 18650 battery as I thought I would be using unprotected 18650 batteries until I found out unprotected batteries are usually only used for battery packs and not small devices. Unprotected batteries lack a PCB built into the battery protecting it from overdischarge which most charger ICs do not have. I decided on using protected 18650 batteries without putting a BMS on the PCB.
+
+Moving onto the charger IC where I spent an HOUR, I ended up choosing the BQ24072. While looking for one, I TRULY did not want to choose a Texas Instruments charger because of their datasheets. I also wanted to try and find an IC in a package with leads because I want this to be fully solderable with a soldering iron. I did find one, the [LTC4000](https://www.analog.com/en/products/ltc4000-1.html) but it was basically unsourceable or was too expensive. Landed on the BQ24072, the least complicated to wire. 
+
+**Total time spent: 2h**
