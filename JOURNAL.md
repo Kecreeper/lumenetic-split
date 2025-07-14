@@ -95,3 +95,4 @@ Moving onto the LDO, I nearly chose an unsuitable 3.3V without realising, the R1
 Using the formula ` Power Dissipation = (Vin - Vout) * Iout `, I can see that I will need at least 1530mW of power dissipation to power 30 LEDs at half power (30mA each) when inputting 5v through USB. I'm not sure yet that I'll use 30 LEDs nor that I'll run at them at half power but I'll be choosing another one.
 
 This is the schematic so far. Since 70 keys is a commonly sold amount of keys, I added an extra column of keys.
+![July 13 schematic](/imagesJournal/July13Schematic.png)
