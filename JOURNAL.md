@@ -1,7 +1,7 @@
 ---
 title: "lumenetic-split"
 author: "Eduardo"
-description: "A split keyboard with large magnetic connectors for a charging hub featuring RGBW leds and large battery capacity."
+description: "A split keyboard with large magnetic connectors for a charging hub featuring RGB leds and large battery capacity."
 created_at: "2025-07-01"
 ---
 
@@ -92,7 +92,24 @@ To solve this I would be passing the PROG pin from the keyboard's charger to the
 
 Moving onto the LDO, I nearly chose an unsuitable 3.3V without realising, the R1172H331B-T1-FE. [This comment](https://www.reddit.com/r/AskElectronics/comments/18urbw4/comment/kfn9r85/) saved me by teaching me about power dissipation. 
 
-Using the formula ` Power Dissipation = (Vin - Vout) * Iout `, I can see that I will need at least 1530mW of power dissipation to power 30 LEDs at half power (30mA each) when inputting 5v through USB. I'm not sure yet that I'll use 30 LEDs nor that I'll run at them at half power but I'll be choosing another one.
+At full power, the NeoPixel LEDs I will use can draw up to 60mA each. Using the formula ` Power Dissipation = (Vin - Vout) * Iout `, I can see that I will need at least 1530mW of power dissipation to power 30 LEDs at half power when inputting 5v through USB. I'm not sure yet that I'll use 30 LEDs nor that I'll run at them at half power but I'll be choosing another one.
 
 This is the schematic so far. Since 70 keys is a commonly sold amount of keys, I added an extra column of keys.
 ![July 13 schematic](/imagesJournal/July13Schematic.png)
+
+**Total time spent: 6h**
+
+# July 14, 2025
+
+## The Lights
+
+After looking at SK6812 RGBW LEDs, I realized that their power supply voltage has to be 3.5v-5.5v, making an LDO somewhat useless here. 
+
+There's a problem here: The 3.7v li-ion battery will operate in a range of 3.0v to 4.2v. The acceptable logic input voltage for the LEDs are `-0.5 ~ VDD+0.5`. When the battery is at 3.8v-4.2v, the 3.3v logic voltage of the nRF's GPIO will be out of range. That is until I saw that WS2812B LEDs work with a logic voltage of 75% of their power supply voltage, meaning 3.3v GPIOs will work when 
+
+## The Design
+
+At this point, I realized my original idea for the LED bar, a straight line, was boring, so I instead tried to make it into a curve... and gave up. Here's a GIF of the attempts (i held down the redo button).
+![July 14 LEDs](/imagesJournal/July14LEDs.gif)
+
+**Total time spent: 4h**
