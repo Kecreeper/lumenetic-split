@@ -113,3 +113,21 @@ At this point, I realized my original idea for the LED bar, a straight line, was
 ![July 14 LEDs](/imagesJournal/July14LEDs.gif)
 
 **Total time spent: 4h**
+
+## The Footprints
+
+I forgot to mention that this is a reversible PCB, so it'll need reversible footprints. So far I have used reversible hotswappable MX footprints. I also made my own reversible SOD-123F footprint.
+
+![SOD-123F footprint](/imagesJournal/SOD123FFootprint.png)
+
+This is meant to be fully hand solderable so I made this footprint with large inner pad slots for the E73 as well.
+
+![E73 footprint](/imagesJournal/E73Footprint.png)
+
+## The Curve
+
+I decided to attempt making the LEDs curve again, this time with a Bezier curve. I used [this Desmos template](https://www.desmos.com/calculator/cahqdxeshd) to create one where I used measurements of the MX switch bounds to align the LEDs. I then figured out where to place them just by drawing lines along the Y-axis and zoomed in to estimate because Desmos randomly decided that it didn't want to create intersection points. I messed up and restarted only 3 times, a personal record. This took me 4 hours...
+
+![LED curve](/imagesJournal/July15LEDs.png)
+
+**Total time spent: 5h**
