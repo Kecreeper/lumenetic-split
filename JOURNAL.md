@@ -1,7 +1,7 @@
 ---
 title: "lumenetic-split"
 author: "Eduardo"
-description: "A split keyboard with large magnetic connectors for a charging hub featuring RGB leds and large battery capacity."
+description: "A split keyboard with large magnetic connectors for a charging hub featuring RGBW leds and large battery capacity."
 created_at: "2025-07-01"
 ---
 
@@ -78,7 +78,7 @@ I will be using pogo pin connectors for this which has to have atleast 5 pins.
 - Pin 3 will be PROG (explained in next section)
 ![Connector pinout](/imagesJournal/ConnectorPinout.png)
 
-I could pass the status pins from the battery charger to the dock but that would require at least 2 more pins. The pogo pin connectors rise in cost the more pins.
+I could pass the status pins from the battery charger to the dock but that would require at least 2 more pins. The pogo pin connectors rise in cost the more pins there are.
 
 ## The Dock
 
@@ -114,6 +114,8 @@ At this point, I realized my original idea for the LED bar, a straight line, was
 
 **Total time spent: 4h**
 
+# July 15, 2025
+
 ## The Footprints
 
 I forgot to mention that this is a reversible PCB, so it'll need reversible footprints. So far I have used reversible hotswappable MX footprints. I also made my own reversible SOD-123F footprint.
@@ -129,5 +131,30 @@ This is meant to be fully hand solderable so I made this footprint with large in
 I decided to attempt making the LEDs curve again, this time with a Bezier curve. I used [this Desmos template](https://www.desmos.com/calculator/cahqdxeshd) to create one where I used measurements of the MX switch bounds to align the LEDs. I then figured out where to place them just by drawing lines along the Y-axis and zoomed in to estimate because Desmos randomly decided that it didn't want to create intersection points. I messed up and restarted only 3 times, a personal record. This took me 4 hours...
 
 ![LED curve](/imagesJournal/July15LEDs.png)
+
+**Total time spent: 5h**
+
+# July 21, 2025
+
+## The Logic
+
+In solving the logic level for the LEDs, I have decided to use SKC6812 LEDs that *allegedly* support 3.3v logic at 5v, as seen [here](https://github.com/awawa-dev/HyperHDR/discussions/726). The forward voltage drop of the schottky diode on the load sharing circuit will also bring the input supply voltage closer to 3.3v.
+
+## The Gate
+
+On most microcontroller boards meant for keyboards like the nice!nano and the Supermini nRF52840, they have pin P0.13 tied to the enable pin of their 3.3v regulators. This is mostly meant for cutting power to Neopixels when they are not being used as the draw up to 1mA per LED. I integrated this ability with the same MOSFET
+
+## The Battery
+
+I wanted to fit the 18650 battery next to the thumb cluster, however many battery holders were simply way to large. So I made my own battery holder.
+
+1. I chose a battery, specifically [this one](https://liionwholesale.com/products/protected-3400mah-10a-18650-button-top-battery-wholesale-discount) which gave me dimensions.
+2. I found battery contacts on AliExpress. This one was difficult because I could not find precise measurements for battery contacts immediately but eventually found them.
+
+![battery contacts](/imagesJournal/BatteryContacts.png)
+
+3. I created a footprint with a graphic of the battery and battery contacts with their dome and spring. I then lined up through hole pads where I could solder the battery contacts.
+
+![18650 battery holder footprint](/imagesJournal/18650Footprint.png)
 
 **Total time spent: 5h**
