@@ -223,3 +223,18 @@ Being unable to route lines under the module wasted my time as I went back to us
 
 This is the PCB so far
 ![July 29 PCB](/imagesJournal/July29PCB.png)
+
+**Total time spent: 8h**
+
+# July 30, 2025
+
+## The Routing
+
+This entire day was spent on routing this very complicated PCB. I honestly thought this was going to be easy. It is so confusing working with so many polygon fills. I also decided against the BQ24075 and went for the BQ24072 because its SYSOFF pin also disables charging and simplifying battery monitoring. With this change, I use a mosfet to toggle the output of it with a low current slide switch. I have no idea whether or not if my PCB copper heatsinks are adequete enough or too much... oh well.
+
+I managed to squeeze in the 5-way switch and rotary encoder with horrific routing. I also want to include a 35mm cirque touchpad. I have no idea where to put the I2C pull-up resistors and pads for it. I may start using 0603 resistors.
+
+Tomorrow I have to absolutely speedrun the charging dock, software, and case before the July 31st deadline for highway... 
+![July 30 PCB](/imagesJournal/July30PCB.png)
+
+**Total time spent: 9h**
